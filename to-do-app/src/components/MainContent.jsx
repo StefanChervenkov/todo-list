@@ -1,4 +1,5 @@
 import AddNewTodoBtn from "./AddNewTodoBtn";
+import TodoListTable from "./TodoListTable";
 
 export default function MainContent() {
     return (
@@ -11,13 +12,8 @@ export default function MainContent() {
 
                 <AddNewTodoBtn />
 
+                <TodoListTable />
 
-                <div className="table-wrapper">
-
-                    
-
-                    
-                </div>
             </section>
         </main>
     )
