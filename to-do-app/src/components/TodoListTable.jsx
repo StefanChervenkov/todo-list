@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import TodoListItem from "./TodListItem";
 
 export default function TodoListTable() {
@@ -8,7 +8,9 @@ export default function TodoListTable() {
         fetch("http://localhost:3030/jsonstore/todos")
             .then((response) => response.json())
             .then((data) => {
-                setTodos(data);
+                
+                
+                setTodos(Object.values(data));
             });
     }, []);
     
@@ -28,7 +30,9 @@ export default function TodoListTable() {
                     </tr>
                 </thead>
                 <tbody>
-                <TodoListItem/>
+                {todos.map((todo) => (
+                    <TodoListItem key={todo._id} todoText={todo.text} isCompleted={todo.isCompleted} />
+                ))}
 
 
                 </tbody>
