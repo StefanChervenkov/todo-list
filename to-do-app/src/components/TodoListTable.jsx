@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import TodoListItem from "./TodListItem";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function TodoListTable() {
     const [todos, setTodos] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch("http://localhost:3030/jsonstore/todos")
             .then((response) => response.json())
             .then((data) => {
                 
-                
+                setIsLoading(false);
                 setTodos(Object.values(data));
             });
     }, []);
@@ -17,7 +19,7 @@ export default function TodoListTable() {
     return (
         <div className="table-wrapper">
 
-
+            {isLoading && <LoadingSpinner />}
 
 
 
